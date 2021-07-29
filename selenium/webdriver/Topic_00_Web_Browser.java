@@ -4,43 +4,56 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_01_Check_Environment {
+public class Topic_00_Web_Browser {
 	WebDriver driver;
 	String projectPath = System.getProperty ("user.dir");
 	
 	@BeforeClass
 	public void beforeClass() {
+		//FireFox
 		System.out.println(projectPath);
 		System.setProperty("webdriver.gecko.driver",projectPath +"\\browserDrivers\\geckodriver.exe");
 		driver = new FirefoxDriver();
+		
+		//Chrom
+		//System.out.println(projectPath);
+		//System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
+		//driver = new ChromeDriver();
+		
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		driver.get("http://demo.guru99.com/v4/");
 	}
 
 	@Test
-	public void TC_01_ValidateCurrentUrl() {
-		// Login Page Url matching
+	public void TC_01_() {
+		// 
 		String loginPageUrl = driver.getCurrentUrl();
 		Assert.assertEquals(loginPageUrl, "http://demo.guru99.com/v4/");
 	}
 
 	@Test
-	public void TC_02_ValidatePageTitle() {
-		// Login Page title
+	public void TC_02_() {
+		// 
 		String loginPageTitle = driver.getTitle();
 		Assert.assertEquals(loginPageTitle, "Guru99 Bank Home Page");
 	}
 
 	@Test
-	public void TC_03_LoginFormDisplayed() {
-		// Login form displayed
+	public void TC_03_() {
+		// 
+		Assert.assertTrue(driver.findElement(By.xpath("//form[@name='frmLogin']")).isDisplayed());
+	}
+	@Test
+	public void TC_04_() {
+		// 
 		Assert.assertTrue(driver.findElement(By.xpath("//form[@name='frmLogin']")).isDisplayed());
 	}
 
