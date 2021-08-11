@@ -34,32 +34,34 @@ public class Topic_00_Web_Browser {
 
 	@Test
 	public void TC_01_() {
-		// 
-		String loginPageUrl = driver.getCurrentUrl();
-		Assert.assertEquals(loginPageUrl, "http://demo.guru99.com/v4/");
+	
+	
 	}
 
 	@Test
 	public void TC_02_() {
-		// 
-		String loginPageTitle = driver.getTitle();
-		Assert.assertEquals(loginPageTitle, "Guru99 Bank Home Page");
+	
 	}
 
 	@Test
 	public void TC_03_() {
-		// 
-		Assert.assertTrue(driver.findElement(By.xpath("//form[@name='frmLogin']")).isDisplayed());
+	
 	}
 	@Test
 	public void TC_04_() {
-		// 
-		Assert.assertTrue(driver.findElement(By.xpath("//form[@name='frmLogin']")).isDisplayed());
+	
 	}
 
 	@AfterClass
 	public void afterClass() {
 		driver.quit();
 	}
+	public void sleepInSecond(long time) {
+		try {
+			Thread.sleep(time * 1000);
 
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
 }
