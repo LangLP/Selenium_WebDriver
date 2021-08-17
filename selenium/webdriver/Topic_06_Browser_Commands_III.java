@@ -12,7 +12,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_06_Web_Element_Browser_Commands_III {
+public class Topic_06_Browser_Commands_III {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	String firtName, lastName, fullName, email, password;

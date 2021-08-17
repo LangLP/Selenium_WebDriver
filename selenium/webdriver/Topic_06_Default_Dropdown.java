@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+//import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 //import org.openqa.selenium.support.ui.Select;
@@ -84,7 +84,7 @@ public class Topic_06_Default_Dropdown {
 		Assert.assertEquals(driver.findElement(emailTextboxBy).getAttribute("value"),email);
 		
 		dayDropdown=new Select(driver.findElement(dayDropdownBy));
-		Assert.assertEquals(dayDropdown.getFirstSelectedOption().getText(),day);;
+		Assert.assertEquals(dayDropdown.getFirstSelectedOption().getText(),day);
 		
 		monthDropdown=new Select(driver.findElement(monthDropdownBy));
 		Assert.assertEquals(monthDropdown.getFirstSelectedOption().getText(),month);

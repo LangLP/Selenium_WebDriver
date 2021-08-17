@@ -72,8 +72,7 @@ public class Topic_08_Button_Radio_Checkbox {
 	// @Test
 	public void TC_02_Hidden_Element() {
 		driver.get("https://www.fahasa.com/tiep-thuc-sai-gon?fhs_campaign=top_banner");
-		jsExecuter.executeScript("arguments[0].click();", driver.findElement(
-				By.xpath("//div[contains(@class,'background-menu-none-homepage')]//span[text()='Sách Trong Nước']")));
+		jsExecuter.executeScript("arguments[0].click();", driver.findElement(By.xpath("//div[contains(@class,'background-menu-none-homepage')]//span[text()='Sách Trong Nước']")));
 		sleepInSecond(5);
 
 	}
