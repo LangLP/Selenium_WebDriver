@@ -54,7 +54,7 @@ public class Topic_14_Upload_Senkeys {
 	
 	}
 
-	@Test
+	//@Test
 	public void TC_02_SenKeys_Multiple_File() {
 		driver.get("https://blueimp.github.io/jQuery-File-Upload/");
         //Load file ko cần bật Open File Dialog
