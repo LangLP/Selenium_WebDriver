@@ -6,9 +6,9 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 //import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-//import org.testng.Assert;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -21,14 +21,13 @@ public class Topic_13_Windown_Tab {
 	public void beforeClass() {
 		// FireFox
 		System.out.println(projectPath);
-		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-		driver = new FirefoxDriver();
+		//System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		//driver = new FirefoxDriver();
 
 		// Chrom
 		// System.out.println(projectPath);
-		// System.setProperty("webdriver.chrome.driver", projectPath +
-		// "\\browserDrivers\\chromedriver.exe");
-		// driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
+		driver = new ChromeDriver();
 
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -68,11 +67,11 @@ public class Topic_13_Windown_Tab {
 
 		// Switch to Google tab
 		switchToWindowByID(parentTabID);
-		sleepInSecond(2);
+		sleepInSecond(5);
 
 		String googleTabID = driver.getWindowHandle();
 		driver.findElement(By.xpath("//input[@name='q']")).sendKeys("Selenium");
-
+		sleepInSecond(5);
 		// Switch to parent tab
 		switchToWindowByID(googleTabID);
 		sleepInSecond(2);
@@ -80,29 +79,33 @@ public class Topic_13_Windown_Tab {
 		// click to facebook link ->Tab mới
 		driver.findElement(By.xpath("//a[text()='FACEBOOK']")).click();
 		
-		// Switch to facebook tab
-		
+		// Switch to facebook tab	
 		switchToWindowByTitle("Facebook - Đăng nhập hoặc đăng ký");
+		
 		// Switch to parent tab
-		
-		switchToWindowByTitle("Facebook - Đăng nhập hoặc đăng ký");
-
-		
+		switchToWindowByTitle("SELENIUM WEBDRIVER FORM DEMO");
 		
 		// click to lazada link ->Tab mới
-		driver.findElement(By.xpath("//a[text()='FACEBOOK']")).click();
-		
+		driver.findElement(By.xpath("//a[text()='LAZADA']")).click();
 		// Switch to lazada tab
+		switchToWindowByTitle("Shopping online - Buy online on Lazada.vn");
 		
-		switchToWindowByTitle("Facebook - Đăng nhập hoặc đăng ký");
+		// Switch to parent tab
+		switchToWindowByTitle("SELENIUM WEBDRIVER FORM DEMO");
 		
-		// click to facebook link ->Tab mới
-		driver.findElement(By.xpath("//a[text()='FACEBOOK']")).click();
 		
-		// Switch to facebook tab
+		// click to tiki link ->Tab mới
+		driver.findElement(By.xpath("//a[text()='TIKI']")).click();
 		
-		switchToWindowByTitle("Facebook - Đăng nhập hoặc đăng ký");
+		// Switch to tiki tab
 		
+		switchToWindowByTitle("Tiki - Mua hàng online giá tốt, hàng chuẩn, ship nhanh");
+		
+		Assert.assertTrue(driver.findElement(By.cssSelector("input[placeholder='Tìm sản phẩm, danh mục hay thương hiệu mong muốn ...']")).isDisplayed());
+
+		driver.findElement(By.cssSelector("input[placeholder='Tìm sản phẩm, danh mục hay thương hiệu mong muốn ...']")).sendKeys("iphone");
+		
+
 	}
 	
 
@@ -129,7 +132,7 @@ public class Topic_13_Windown_Tab {
 		// duyêt qua các giá trị trong tab window
 		for (String id : windowIDs) {
 			// kiểm tra điều kiện nếu như khác với WindownID truyền vào thì sưitch
-			if (!id.equals(windowIDs)) {
+			if (!id.equals(windowID)) {
 				driver.switchTo().window(id);
 				// thoát khỏi vòng lặp
 				break;
