@@ -121,7 +121,7 @@ public class Topic_14_Upload_File_II {
 		Assert.assertTrue(driver.findElement(By.xpath("//span[text()='" + amazonFileName + "']/parent::a/parent::div/following-sibling::div//div[text()='0 downloads']")).isDisplayed());
 		
 		Assert.assertTrue(driver.findElement(By.xpath("//span[text()='" + googleFileName + "']/parent::a/parent::div/following-sibling::div//div[@class='col-sm-2 text-center text-sm-right']")).isDisplayed());
-		//Assert.assertTrue(driver.findElement(By.xpath("//span[text()='" + facebookFileName + "']/parent::a/parent::div/following-sibling::div//div[@class='col-sm-2 text-center text-sm-right']")).isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//span[text()='" + facebookFileName + "']/parent::a/parent::div/following-sibling::div//div[@class='col-sm-2 text-center text-sm-right']")).isDisplayed());
 		//Assert.assertTrue(driver.findElement(By.xpath("//span[text()='" + amazonFileName + "']/parent::a/parent::div/following-sibling::div//div[@class='col-sm-2 text-center text-sm-right']")).isDisplayed());
 		
 		
