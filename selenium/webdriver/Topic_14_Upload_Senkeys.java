@@ -40,7 +40,7 @@ public class Topic_14_Upload_Senkeys {
 	}
 
 	@Test
-	public void TC_01_SenKeys_One_File() {
+	public void TC_01_SenKeys_One_File() { //  chỉ senKey  vào "//input[@type='file']"
 		driver.get("https://blueimp.github.io/jQuery-File-Upload/");
         //Load file ko cần bật Open File Dialog
 		driver.findElement(By.xpath("//input[@type='file']")).sendKeys(googleFilePath);

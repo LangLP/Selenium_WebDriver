@@ -18,7 +18,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_06_Custom_BrowsersII {
+public class Topic_06_Custom_Dropdow {
 	WebDriver driver;
 	WebDriverWait expliciWait;
 	JavascriptExecutor jsExecuter;
@@ -26,7 +26,7 @@ public class Topic_06_Custom_BrowsersII {
 	String projectPath = System.getProperty("user.dir");
 
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClass() {//cha ull/span/div + con li/div/span
 		System.out.println(projectPath);
 		// FireFox
 		// System.setProperty("webdriver.gecko.driver",projectPath
@@ -70,23 +70,15 @@ public class Topic_06_Custom_BrowsersII {
 
 		slectItemInCustomDropdown("//i[@class='dropdown icon']", "//div[@role='option']//span", "Jenny Hess");
 		sleepInSecond(2);
-		Assert.assertTrue(driver
-				.findElement(
-						By.xpath("//div[contains(@class,'select')]//div[@class='divider text'and text()='Jenny Hess']"))
-				.isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'select')]//div[@class='divider text'and text()='Jenny Hess']")).isDisplayed());
 
 		slectItemInCustomDropdown("//i[@class='dropdown icon']", "//div[@role='option']//span", "Elliot Fu");
 		sleepInSecond(2);
-		Assert.assertTrue(driver
-				.findElement(
-						By.xpath("//div[contains(@class,'select')]//div[@class='divider text'and text()='Elliot Fu']"))
-				.isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'select')]//div[@class='divider text'and text()='Elliot Fu']")).isDisplayed());
 
 		slectItemInCustomDropdown("//i[@class='dropdown icon']", "//div[@role='option']//span", "Matt");
 		sleepInSecond(2);
-		Assert.assertTrue(driver
-				.findElement(By.xpath("//div[contains(@class,'select')]//div[@class='divider text'and text()='Matt']"))
-				.isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//div[contains(@class,'select')]//div[@class='divider text'and text()='Matt']")).isDisplayed());
 
 	}
 
@@ -97,21 +89,15 @@ public class Topic_06_Custom_BrowsersII {
 
 		slectItemInCustomDropdown("//li[@class='dropdown-toggle']", "//ul[@class='dropdown-menu']//a", "Second Option");
 		sleepInSecond(2);
-		Assert.assertTrue(
-				driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'Second Option')]"))
-						.isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'Second Option')]")).isDisplayed());
 
 		slectItemInCustomDropdown("//li[@class='dropdown-toggle']", "//ul[@class='dropdown-menu']//a", "Third Option");
 		sleepInSecond(2);
-		Assert.assertTrue(
-				driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'Third Option')]"))
-						.isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'Third Option')]")).isDisplayed());
 
 		slectItemInCustomDropdown("//li[@class='dropdown-toggle']", "//ul[@class='dropdown-menu']//a", "First Option");
 		sleepInSecond(2);
-		Assert.assertTrue(
-				driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'First Option')]"))
-						.isDisplayed());
+		Assert.assertTrue(driver.findElement(By.xpath("//li[@class='dropdown-toggle' and contains(text(),'First Option')]")).isDisplayed());
 	}
 
 	// @Test

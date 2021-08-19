@@ -14,7 +14,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_06_Default_Dropdown {
+public class Topic_06_Default_Dropdown {//chon item trong texbox(thẻ cha select+hthỏe  con  option)
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
 	Select dayDropdown, monthDropdown, yearDropdown;

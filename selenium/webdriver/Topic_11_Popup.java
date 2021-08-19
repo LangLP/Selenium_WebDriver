@@ -7,32 +7,34 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-public class Topic_11_Popup {
+public class Topic_11_Popup {//quang  cao tu  tran web
 	WebDriver driver;
 	JavascriptExecutor jsExecuter;
-
+	WebDriverWait explicitWait;
 	String projectPath = System.getProperty("user.dir");
 
 	@BeforeClass
 	public void beforeClass() {
 		// FireFox
 		System.out.println(projectPath);
-		System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-		 driver = new FirefoxDriver();
+		//System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		 //driver = new FirefoxDriver();
 			jsExecuter = (JavascriptExecutor) driver;
 
 		// Chrom
 		// System.out.println(projectPath);
-		//System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
-		//driver = new ChromeDriver();
-
+		System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
+		driver = new ChromeDriver();
+		explicitWait = new WebDriverWait(driver,15);
 		driver.manage().timeouts().implicitlyWait(defaultTimeout, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
@@ -62,6 +64,8 @@ public class Topic_11_Popup {
 		By homePupup = By.cssSelector("img[alt='home_popup_banner']");
 		// verify home popup is display
 		Assert.assertTrue(isElementDisplayed(homePupup));
+		
+		explicitWait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".shopee-popup__close-btn")));
 
 		driver.findElement(By.cssSelector(".shopee-popup__close-btn")).click();
 		sleepInSecond(3);
@@ -82,11 +86,14 @@ public class Topic_11_Popup {
 
 		driver.findElement(By.cssSelector("section input[class='search-field']")).sendKeys("Selenium");
 		//section//span[@class='glass']
+		sleepInSecond(5);
+		
+		explicitWait.until(ExpectedConditions.elementToBeClickable(By.xpath("//section//span[@class='glass']")));
 		driver.findElement(By.xpath("//section//span[@class='glass']")).click();
 		//jsExecuter.executeScript("arguments[0].click();", driver.findElement(By.cssSelector("section span[class='glass']")));
 
 
-		sleepInSecond(3);
+	
 
 		List<WebElement> postArticles = driver.findElements(By.xpath("//h3[@class='post-title']/a"));
 
@@ -100,7 +107,7 @@ public class Topic_11_Popup {
 	}
 
 	//@Test
-	public void TC_04_() {
+	public void TC_04_Shopee() {
 		driver.get("https://shopee.vn/");
          String SearchKeyword = "Macbook Pro" ;
 		if (isElementDisplayed2(By.cssSelector("img[alt='home_popup_banner']"))) {
@@ -127,8 +134,8 @@ public class Topic_11_Popup {
 
 	public boolean isElementDisplayed(By By) {
 		try {
-			// no tim element trong vong 5
-			// khi nao het 5 moi threw Exception
+			// no tim element trong vong 5s
+			// khi nao het 5s moi threw Exception
 
 			return driver.findElement(By).isDisplayed();
 
